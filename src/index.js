@@ -16,18 +16,11 @@ axios.interceptors.request.use(request => {
 });
 
 axios.interceptors.response.use(response => {
-  console.log(response);
   return response;
 }, error => {
   return Promise.reject(error);
 })
 
-// ReactDOM.render(
-//   <React.StrictMode>
-//     <App />
-//   </React.StrictMode>,
-//   document.getElementById('root')
-// );
 
 ReactDOM.render(
   <Provider store={stockStore}>

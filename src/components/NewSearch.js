@@ -6,11 +6,10 @@ import HighchartsReact from 'highcharts-react-official';
 import getSeriesData, {generateTimeSeries} from '../utils/util';
 
 import {getDailyStockTimeSeries, setStockTicker} from '../actions/action'
-import {ErrorToast} from './presentation/ErrorToast'
+import ErrorToast from './presentation/ErrorToast'
 
 const NewSearch = props => {
     const {isTickerValid} = props;
-    console.log('Params', props.match.params.ticker);
     let stockData = [];
     let options;
     const ticker = props.match.params.ticker;

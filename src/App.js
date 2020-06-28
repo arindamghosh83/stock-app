@@ -19,7 +19,8 @@ function App(props) {
         <Navigation/>
         <Layout>
           <Switch>
-            <Route path='/' exact render={(props) => <Home {...props}/>} />
+            {/* <Route path='/' exact render={(props) => <Home {...props} errorMessage={props.errorMessage} errorOccurred={props.errorOccurred} />} /> */}
+            <Route path='/' exact component={Home} />} />
             {props.loggedIn ? <Route path='/newSearch/:ticker' exact component={NewSearch} />: <Redirect to={{pathname: '/'}}/>}
             <Route path='/error' exact component={Error} />
             <Route path='/preference/:preferenceId'  exact component={SearchPreference} />

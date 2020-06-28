@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import {connect} from 'react-redux';
 import Toast from 'react-bootstrap/Toast';
-import {resetError} from '../../actions/action'
+import {resetError} from '../../actions/action';
 
 
-export const ErrorToast = (props) => {
+const ErrorToast = (props) => {
     const [showA, setShowA] = useState(true);
 
     return  (
@@ -13,7 +13,7 @@ export const ErrorToast = (props) => {
         <div className='col-xs-12'>
         <Toast show={showA} onClose={() => {
             setShowA(!showA);
-            //props.resetError();
+            props.resetError();
             }} autohide={false}>
         <Toast.Header>
           <img

@@ -19,10 +19,6 @@ const Navigation = props => {
     const authenticateHandler = () => {
       props.login(userName, password);
     }
-    // const clickHandler = (eventKey, event) => {
-    //     console.log('event fired',eventKey, event);
-    //     props.changePreference(eventKey);
-    // }
     return (
         <div>
     <Navbar bg="dark" expand="lg">
@@ -48,15 +44,6 @@ const Navigation = props => {
         <h3 className={props.loggedIn ? classes.show : classes.hidden}>{`Hi ${props.username}`}</h3>
         </Form>
         <Nav className="ml-auto">
-          {/* <Nav.Link href="#home">Home</Nav.Link>
-          <Nav.Link href="#link">Link</Nav.Link> */}
-          {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown" onClick={(e)=> clickHandler(e)}>
-            <NavDropdown.Item href="#action/3.1">Open</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.2">High</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.3">Low</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.4">Close</NavDropdown.Item>
-          </NavDropdown> */}
-          {/* <Dropdown navbar={true} onSelect={(eventKey, event)=> clickHandler(eventKey,event)}> */}
           <Dropdown navbar={true}>
             <Dropdown.Toggle variant="success" id="dropdown-basic">
                 Select Preferences
