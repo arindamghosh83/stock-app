@@ -1,26 +1,43 @@
 import React from 'react';
-import logo from './logo.svg';
+import {connect} from 'react-redux';
+import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import {Layout} from './components/presentation/Layout';
+import {Home} from './components/Home';
+import Navigation from './components/presentation/Navigation'; 
+import {Error} from './components/Error';
+import NewSearch from './components/NewSearch';
+import SearchPreference from './components/SearchPreference';
+import {login} from './actions/action';
 
-function App() {
+function App(props) {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <React.Fragment>        
+        <Router>
+        <Navigation/>
+        <Layout>
+          <Switch>
+            <Route path='/' exact render={(props) => <Home {...props}/>} />
+            {props.loggedIn ? <Route path='/newSearch/:ticker' exact component={NewSearch} />: <Redirect to={{pathname: '/'}}/>}
+            <Route path='/error' exact component={Error} />
+            <Route path='/preference/:preferenceId'  exact component={SearchPreference} />
+          </Switch>
+          </Layout>
+        </Router>
+      </React.Fragment>
     </div>
   );
 }
 
-export default App;
+const mapStatetoProps = state => ({
+  loggedIn: state.auth.loggedIn,
+  errorMessage: state.error.errorMessage,
+  errorOccurred: state.error.errorOccurred,
+
+})
+  
+export default connect(mapStatetoProps, {login})(App);
+
+//export default App;

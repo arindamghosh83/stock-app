@@ -1,0 +1,9 @@
+.show {
+    display: inline-block;
+}
+.hidden {
+    display: none;
+}
+h3.show {
+    color: aliceblue;
+}
